@@ -1,0 +1,255 @@
+﻿@model ixf_V2.Models.Service.ServiceQuestionContext
+@{
+    Layout = null;
+}
+
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-with,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="~/Static/Goods/Css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Static/Goods/Css/News.css" rel="stylesheet" />
+    <link rel="icon" href="~/Static/Goods/Img/logo_top.png" type="image/x-icon" />
+    <title>增值服务</title>
+</head>
+<body>
+    <!--head-->
+    <nav class="navbar navbar-default navigation navbar-fixed-top">
+        <div class="container-fluid ">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Home/Index">
+                    <img alt="Brand" src="~/Static/Goods/Img/logo_top.png" class="img-responsive center-block" style="width:55%;">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="http://iot.ixfcn.com/">物联网</a></li>
+                    <li><a href="http://dmd.ixfcn.com/">检测维保</a></li>
+                    <li><a href="/Home/Maintain">交易</a></li>
+                    <li><a href="/Home/ServiceQuestion">增值服务</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">未登录</a></li>
+                    <li class="dropdown">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="/Home/Index">
+                                <img alt="Brand" src="~/Static/Goods/Img/personal.JPG">
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="centre">
+        <!--图片-->
+        <div class="centre_img">
+            <img src="~/Static/Goods/Img/help.jpg" class="img-responsive center-block">
+        </div>
+        <!--目录-->
+        <div class="row">
+            <div class="col-md-3">
+
+                <div class="navbar navbar-default" style="background-color: #0094ff;">
+                    <h4 style="margin-left: 2%;color:#000000">
+                        <a href="/Home/Index" style="color:#000000">首页</a> / 增值服务
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </h4>
+                </div>
+
+                <ul class="list-group collapse navbar-collapse" id="navbar-collapse">
+                    <li class="list-group-item active"><a href="/Home/ServiceQuestion" style="color:white;"><strong>我要提问</strong></a></li>
+                    <li class="list-group-item"><a href="/Home/Service" style="display:block;"><strong>我要投诉</strong></a></li>
+                    <li class="list-group-item"><a href="/Home/Maintain" style="display:block"><strong>有奖竞答</strong></a></li>
+                    <li class="list-group-item"><a href="/Home/ServiceCommon" style="display:block"><strong>百姓窗口</strong></a></li>
+                </ul>
+
+            </div>
+            <!--内容输出-->
+            <div class="col-md-9">
+                <ul class="list-group">
+                    @foreach (var v in Model.ListContent)
+                    {
+                        <li class="content_li list-group-item">
+                            <a style="display:block;color:#000000;" data-toggle="modal" data-target="#myModal_@v.Subject">@v.Subject<p style="float:right;color:#000000;">@v.Time</p></a>
+                            <div class="modal fade" id="myModal_@v.Subject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">详情</h4>
+                                        </div>
+
+                                        <div class="modal-body">
+
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th nowrap="nowrap">问题：</th>
+                                                        <th>@v.Subject</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap">回答：</td>
+                                                        <td>@v.Reply</td>
+                                                    </tr>
+                                                    @*
+                                                    <tr>
+                                                        <td nowrap="nowrap">提出用户：</td>
+                                                        <td>@v.UserName</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap">用户邮箱：</td>
+                                                        <td>@v.Mail</td>
+                                                    </tr>
+                                                    *@
+                                                </thead>
+                                            </table>
+
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal -->
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </div><!--centre-->
+
+    <div class="more">
+        <div class="col-md-12 col-xs-12 correlation">
+            <div class="col-md-2">
+                <p>搜索推荐</p>
+            </div>
+            <div class="col-md-10">
+                <input type="image" src="~/Static/Goods/Img/WeChat.JPG">
+                <input type="image" src="~/Static/Goods/Img/microblog.JPG">
+                <input type="image" src="~/Static/Goods/Img/code.jpg">
+                <input type="image" src="~/Static/Goods/Img/code.jpg">
+                <input type="image" src="~/Static/Goods/Img/code.jpg">
+                <input type="image" src="~/Static/Goods/Img/code.jpg">
+                <input type="image" src="~/Static/Goods/Img/code.jpg">
+                <input type="image" src="~/Static/Goods/Img/code.jpg">
+                <input type="image" src="~/Static/Goods/Img/code.jpg">
+                <input type="image" src="~/Static/Goods/Img/code.jpg">
+                <input type="image" src="~/Static/Goods/Img/code.jpg">
+                <input type="image" src="~/Static/Goods/Img/code.jpg">
+            </div>
+        </div>
+        <div class="col-md-12 col-xs-12 more-search">
+            <div class="row">
+                <div class="col-md-2 col-xs-6">
+                    <ul class="list-unstyled">
+                        <li style="font-size:0.9em;">增值服务</li>
+                        <li><a href="#">消防档案</a></li>
+                        <li><a href="#">消防资质</a></li>
+                        <li><a href="#">作战预案</a></li>
+                        <li><a href="#">消防考试</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <ul class="list-unstyled">
+                        <li style="font-size:0.9em;">爱消防官方商城</li>
+                        <li><a href="#">我的订单</a></li>
+                        <li><a href="#">与我们联系</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <ul class="list-unstyled">
+                        <li style="font-size:0.9em;">下载</li>
+                        <li><a href="#">学术论文</a></li>
+                        <li><a href="#">参考文献</a></li>
+                        <li><a href="#">专家发表</a></li>
+                        <li><a href="#">新技术</a></li>
+                        <li><a href="#">消防游戏</a></li>
+                        <li><a href="#">网络宣传教育影片</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <ul class="list-unstyled">
+                        <li style="font-size:0.9em;">消防体验</li>
+                        <li><a href="#">V R消防体验</a></li>
+                        <li><a href="#">真人消防体验</a></li>
+                        <li><a href="#">消防训练馆</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-1 col-xs-6">
+                    <ul class="list-unstyled">
+                        <li style="font-size:0.9em;">公司</li>
+                        <li><a href="#">招纳贤士</a></li>
+                        <li><a href="#">关于爱消防</a></li>
+                        <li><a href="#">公司新闻</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--底部版权-->
+    <div class="bott_cop">
+        <div class="bott_cop_row">
+            <div class="cop_r1">
+                <ul class="cop_a">
+                    <li>友情链接：</li>
+                    <li><a href="#">中国中央人民政府</a></li>
+                    <li> </li>
+                    <li><a href="#">中国消防在线 </a></li>
+                    <li> </li>
+                    <li><a href="#">中国消防协会 </a></li>
+                    <li> </li>
+                    <li><a href="#">走近中国消防 </a></li>
+                </ul><br>
+                <ul class="saml">
+                    <li>公司地址：</li>
+                    <li><a href="#">上海市闵行区万源路2158号泓毅大厦B座</a></li>
+                    <li></li>
+                    <li><a href="#">沪ICP备15053056号-1</a></li>
+                </ul>
+            </div>
+            <div class="cop_r2">
+                <img src="~/Static/Goods/Img/底部二维码.png" />
+            </div>
+        </div>
+    </div><!--bott_cop-->
+
+    <script src="~/Static/Goods/Js/jquery.min.js"></script>
+    <script src="~/Static/Goods/Js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+@**@
+    <div>
+        @foreach(var v in Model.ListContent)
+        {
+            @v.Subject<br />
+            @v.UserName<br />
+            @v.Mail<br />
+            @v.Content<br />
+            @v.Reply<br />
+            @v.Time<br />
+            <hr />
+        }
+    </div>

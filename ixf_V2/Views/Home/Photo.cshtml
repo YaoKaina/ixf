@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Photo</title>
+   
+</head>
+<body>
+    <div>
+       <form action="/Home/SavePhoto"  runat="server" method="post" enctype="multipart/form-data">
+           单位名称：<input type="text" name="Name" /><br />
+           单位地址：<input type="text" name="Address" /><br />
+           培训时间：@DateTime.Now <input type="hidden" value="@DateTime.Now" name="Time" /><br />
+           培训内容：@Model <input type="hidden" value="学校" name="Content" /><br />
+           培训人数：<input type="number" name="PeopleNum" /><br />
+           现场全景照：<input type="file" name="Img" multiple="multiple" /><br />
+           意见和建议：<input type="text" name="Suggest" /><br />
+           <input type="submit" value="提交" />
+       </form>
+    </div>
+</body>
+</html>
